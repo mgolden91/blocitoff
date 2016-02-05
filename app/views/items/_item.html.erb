@@ -1,0 +1,6 @@
+<h3>To-Do List</h3>
+<% @items.each do |item| %>
+<ul>
+<li><%= link_to item.name, item%></li>
+</ul>
+<% end %>
