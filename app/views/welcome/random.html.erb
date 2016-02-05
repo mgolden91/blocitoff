@@ -1,0 +1,15 @@
+<h1>Random Things To-Do</h1>
+
+
+<div class="col-md-8">
+  <% @items.each do |item| %>
+        <ul>
+          <li>
+            <%= link_to item.name, item%><!--  - <%= distance_of_time_in_words(item.created_at, Time.now - 7.days) %> Remaining</li>
+            <%= link_to "Completed", item, method: :delete, class: 'glyphicon glyphicon-ok' %>
+            <%= link_to "Edit", edit_item_path(item.id), class: 'btn btn-success' %>
+            <%= link_to "Delete", item, method: :delete, class: 'btn btn-danger' %> -->
+          </li>
+        </ul>
+  <% end %>
+</div>
