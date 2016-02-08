@@ -1,16 +1,17 @@
-<h1>To-Do List</h1>
+<div class="jumbotron">
+  <div class="page-header">
+    <h1>Items</h1>
+    <p><a class="btn btn-success btn-lg" href="items/new" role="button">New Task</a></p>
+  </div>
 
-
-<button><%= link_to 'Create Task', new_user_item_path(current_user) %></button>
-<div class="col-md-8">
-  <% @items.each do |item| %>
-        <ul>
-          <li>
-            <%= link_to item.name, item%><!--  - <%= distance_of_time_in_words(item.created_at, Time.now - 7.days) %> Remaining</li>
-            <%= link_to "Completed", item, method: :delete, class: 'glyphicon glyphicon-ok' %>
-            <%= link_to "Edit", edit_item_path(item.id), class: 'btn btn-success' %>
-            <%= link_to "Delete", item, method: :delete, class: 'btn btn-danger' %> -->
-          </li>
-        </ul>
-  <% end %>
+     <div class="row">
+         <% @items.each do |item| %>
+          <div class="col-md-8"><%= link_to item.name, item%> - <%= distance_of_time_in_words(item.created_at, Time.now - 7.days) %> Remaining</br>
+          <%= link_to "Completed", item, method: :delete, class: 'glyphicon glyphicon-ok' %>
+          <%= link_to "Edit", edit_item_path(item.id), class: 'btn btn-success' %>
+          <%= link_to "Delete", item, method: :delete, class: 'btn btn-danger' %>
+          </div>
+         <% end %>
+   </div>
+ </div>
 </div>

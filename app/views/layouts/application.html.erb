@@ -8,35 +8,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <ul class="nav nav-tabs">
-      <li><%= link_to "Home", welcome_index_path, :class => 'navbar-link' %></li>
-      <li><%= link_to "About", welcome_about_path, :class => 'navbar-link' %></li>
+  <div class="container-fluid">
+    <ul class="leftnavtab">
+      <li class="leftnavli"><%= link_to "Blocker", root_path %></li>
+      <li class="leftnavli"><%= link_to "About", welcome_about_path %></li>
       <% if user_signed_in? %>
-      <li><%= link_to 'My To-Do List', user_items_path(current_user), :class => 'navbar-link' %></li>
-      <li><%= link_to 'My Profile', user_path(current_user), :class => 'navbar-link' %></li>
+      <li class="leftnavli"><%= link_to "Tasks", user_items_path(current_user) %></li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="rightnavli"><%= link_to 'My Profile', user_path(current_user)%></li>
+        <li class="rightnavli"><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
+        <li class="rightnavli"><%= image_tag current_user.avatar_url(48), class: "gravatar" %></li>
+        <li class="rightnavlitext"><%= current_user.email %></li>
+      <% else %>
+        <li class="rightnavli"><%= link_to "Sign In", new_user_session_path %></li>
+        <li class="rightnavli"><%= link_to "Sign Up", new_user_registration_path %></li>
       <% end %>
     </ul>
-    <div class="pull-right user-info">
-      <% if user_signed_in? %>
-        Signed in as: <strong><%= current_user.username %></strong>
-        <div class="pull-right">
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'%>
-        </div>
-      <% else %>
-        <ul class="nav nav-tabs">
-          <li><%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %></li>
-          <li><%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %></li>
-        </ul>
-      <% end %>
-    </div>
     <%= yield %>
   </div>
 
-
-
-
-
-
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">Matthew Golden</div>
+        <div class="col-md-4">mgolden91@gmail.com</div>
+        <div class="col-md-4">#link to something</div>
+      </div>
+    </div>
+  </footer>
 </body>
+
 </html>
