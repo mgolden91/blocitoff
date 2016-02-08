@@ -36,3 +36,5 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 
 gem 'devise'
+
+gem 'whenever', :require => false
