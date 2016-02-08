@@ -1,1 +1,6 @@
-<h1><%= @item.name %></h1>
+<div class="jumbotron">
+  <div class="page-header">
+    <h2><%= @item.name %></h2>
+    <p>You have <%= distance_of_time_in_words(@item.created_at, Time.now - 7.days) %> remaining to complete this task.</p>
+  </div>
+</div>
